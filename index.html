@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gerador de Fundos SVG</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="helpers.js"></script>
+  <script defer src="student.js"></script>
+  <script defer src="main.js"></script>
+</head>
+<body class="bg-slate-100 text-slate-900 min-h-screen">
+  <div class="max-w-6xl mx-auto px-4 py-8">
+    <header class="mb-10 text-center">
+      <h1 class="text-4xl font-semibold tracking-tight">Gerador de Fundos SVG</h1>
+      <p class="mt-3 text-slate-600 max-w-2xl mx-auto">
+        Crie banners de fundo simples em SVG. Ajuste tamanho, padrão e linhas da grade para aprender como o código funciona.
+      </p>
+    </header>
+
+    <div class="grid gap-8 lg:grid-cols-[320px_1fr]">
+      <aside class="bg-white shadow-sm rounded-3xl p-6 border border-slate-200">
+        <h2 class="text-xl font-medium mb-4 text-slate-900">Controles</h2>
+        <div class="space-y-5">
+          <label class="block">
+            <span class="text-slate-600">Width do SVG</span>
+            <input id="input-width" type="number" min="100" value="800" class="mt-2 w-full rounded-2xl border border-slate-300 bg-slate-50 px-4 py-2 text-slate-900" />
+          </label>
+
+          <label class="block">
+            <span class="text-slate-600">Height do SVG</span>
+            <input id="input-height" type="number" min="100" value="300" class="mt-2 w-full rounded-2xl border border-slate-300 bg-slate-50 px-4 py-2 text-slate-900" />
+          </label>
+
+          <label class="block">
+            <span class="text-slate-600">Tipo de padrão</span>
+            <select id="select-pattern" class="mt-2 w-full rounded-2xl border border-slate-300 bg-slate-50 px-4 py-2 text-slate-900">
+              <option value="squares">Quadrados</option>
+              <option value="circles">Círculos</option>
+              <option value="triangles">Triângulos</option>
+            </select>
+          </label>
+
+          <label class="block">
+    <span class="text-slate-600">Cor do padrão</span>
+    <input
+        id="input-color"
+        type="color"
+        value="#000080"
+        class="mt-2 w-full h-12 rounded-2xl border border-slate-300 bg-slate-50"/>
+          </label>
+
+          <label class="block">
+            <span class="text-slate-600">Divisões da grade</span>
+            <input id="input-grid-size" type="range" min="2" max="30" value="12" class="mt-3 w-full" />
+            <div class="mt-2 text-slate-400"><span id="label-grid-size">12</span> divisões por linha</div>
+          </label>
+
+          <label class="block">
+            <span class="text-slate-600">Opacidade mínima</span>
+            <input id="input-min-opacity" type="range" min="0" max="1" step="0.05" value="0.3" class="mt-3 w-full" />
+            <div class="mt-2 text-slate-400"><span id="label-min-opacity">0.30</span></div>
+          </label>
+
+          <label class="block">
+            <span class="text-slate-600">Opacidade máxima</span>
+            <input id="input-max-opacity" type="range" min="0" max="1" step="0.05" value="0.8" class="mt-3 w-full" />
+            <div class="mt-2 text-slate-400"><span id="label-max-opacity">0.80</span></div>
+          </label>
+
+          <div class="flex flex-col gap-3 sm:flex-row">
+            <button id="button-generate" class="inline-flex justify-center rounded-2xl bg-slate-900 px-4 py-3 font-semibold text-white transition hover:bg-slate-800">Gerar SVG</button>
+            <button id="button-download" class="inline-flex justify-center rounded-2xl border border-slate-300 bg-white px-4 py-3 text-slate-900 transition hover:bg-slate-50">Baixar SVG</button>
+          </div>
+        </div>
+      </aside>
+
+      <main class="rounded-3xl bg-white shadow-sm p-6 border border-slate-200">
+        <div class="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <h2 class="text-2xl font-medium">Preview do Banner</h2>
+            <p class="mt-2 text-slate-600">O SVG gerado aparece abaixo e pode ser baixado.</p>
+          </div>
+          <div class="rounded-2xl bg-slate-100 px-4 py-3 text-slate-900">
+            <div class="text-sm text-slate-500">SVG atual</div>
+            <div id="preview-size" class="mt-1 text-lg font-semibold"></div>
+          </div>
+        </div>
+
+        <div id="preview" class="rounded-3xl border border-slate-200 bg-slate-50 p-4 flex justify-center items-center min-h-[320px]">
+          <!-- SVG será inserido aqui -->
+        </div>
+      </main>
+    </div>
+  </div>
+</body>
+</html>
