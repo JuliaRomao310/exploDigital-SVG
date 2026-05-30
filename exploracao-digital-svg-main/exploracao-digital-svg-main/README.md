@@ -1,1 +1,0 @@
-# exploracao-digital-svg
